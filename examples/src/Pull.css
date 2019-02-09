@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica,
+    ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root > div {
+  width: 100px;
+  height: 100px;
+  background: hotpink;
+  border-radius: 50%;
+  cursor: -webkit-grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  white-space: pre;
+}
+
+#root > div:active {
+  cursor: -webkit-grabbing;
+}

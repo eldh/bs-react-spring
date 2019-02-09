@@ -1,0 +1,24 @@
+{
+  "name": "bs-react-spring",
+  "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
+  "ppx-flags": ["../ppx/reactjs_jsx_ppx_v3.exe"],
+  "sources": [
+    "src",
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "suffix": ".bs.js",
+  "reason": {
+    "jsx": 3
+  },
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "bs-dependencies": ["@glennsl/bs-jest", "reason-react"],
+  "refmt": 3
+}

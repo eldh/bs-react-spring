@@ -1,0 +1,7 @@
+{
+  "workspaces": [
+    "bs-react-spring",
+    "examples"
+  ],
+  "private": true
+}
