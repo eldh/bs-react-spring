@@ -40,7 +40,7 @@ let make = () => {
     spreadProps=gestureProps
     style={ReactDOMRe.Style.make(
       ~transform=
-        SpringHook.interpolate(vals, (x, y) =>
+        vals->SpringHook.interpolate((x, y) =>
           {j|translate3d($(x)px,$(y)px,0)|j}
         ),
       (),

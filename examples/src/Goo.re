@@ -10,14 +10,13 @@ let trans = (x, y) => {j|translate3d($(x)px,$(y)px,0) translate3d(-50%,-50%,0)|j
 module TrailHook =
   Spring.MakeTrail({
     type t = (float, float);
-    let number = 3;
     type interpolate = (float, float) => string;
   });
 
 [@react.component]
 let make = () => {
   let (trail, set) =
-    TrailHook.use(~config=i => i === 0 ? fast : slow, () => (0, 0));
+    TrailHook.use(~number=3, ~config=i => i === 0 ? fast : slow, () => (0, 0));
 
   <>
     <svg

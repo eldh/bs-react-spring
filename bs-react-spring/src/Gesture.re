@@ -24,6 +24,7 @@ type props = {
   delta: (float, float),
   /* direction normal (vec2) */
   direction: (float, float),
+  cancel: (. int) => unit,
   /* delta with book-keeping (vec2) */
   local: (float, float),
   /* drag momentuum / speed */
@@ -40,7 +41,7 @@ type props = {
   temp: Js.t({.}),
 };
 [@bs.module "react-with-gesture"]
-external _externalUseGesture: (. props => unit) => unit => Spring.Div.spreadProps =
+external _externalUseGesture: (. props => 'a) => 'a => Spring.Div.spreadProps =
   "useGesture";
 
 let useGesture = _externalUseGesture;

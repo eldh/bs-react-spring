@@ -98,7 +98,6 @@ module MakeSpring = (Config: {
 
 module MakeTrail = (Config: {
                       type t;
-                      let number: int;
                       type interpolate;
                     }) => {
   type values = Config.t;
@@ -117,10 +116,10 @@ module MakeTrail = (Config: {
 
   let interpolate = interpolate_;
 
-  let use = (~config=?, ~from=?, startValues) => {
+  let use = (~number, ~config=?, ~from=?, startValues) => {
     let (retValues, set_) =
       useTrail_(
-        Config.number,
+        number,
         constructSpringObj(
           ~values=() => {"__values": startValues()},
           ~from,
@@ -141,6 +140,55 @@ module MakeTrail = (Config: {
       set_(. setInput);
     };
     (retValues |> Array.map(t => t##__values): array(values), setFn);
+  };
+};
+
+module MakeSprings = (Config: {
+                        type t;
+                        type interpolate;
+                      }) => {
+  type values = Config.t;
+  type valuesObj = Config.t;
+  type springsArr = array(valuesObj);
+  type valuesFn = unit => valuesObj;
+
+  [@bs.module "react-spring/hooks"]
+  external useSprings_:
+    (int, int => valuesObj) => (springsArr, (. int => valuesObj) => unit) =
+    "useSprings";
+
+  [@bs.send]
+  external interpolate_: ('a, Config.interpolate) => string =
+    "interpolate";
+
+  let interpolate = interpolate_;
+
+  let use = (~number, ~config=?, ~from=?, startValues) => {
+    let (retValues, set_) =
+      useSprings_(number, i =>
+        Obj.magic(constructSpringObj(
+          ~values=() => startValues(i),
+          ~from,
+          ~config,
+          (),
+          (),
+        ))
+      );
+
+    let setFn = (~config=?, ~from=?, setValues) => {
+      let setInput = i =>
+        constructSpringObj(
+          ~values=() => setValues(i),
+          ~config,
+          ~from,
+          (),
+          (),
+        );
+        Js.log3("setInput", setInput, setInput(0));
+        
+      set_(. Obj.magic(setInput));
+    };
+    (retValues |> Array.map(t => t): array(values), setFn);
   };
 };
 
