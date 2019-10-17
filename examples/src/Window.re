@@ -13,14 +13,13 @@ external removeWindowEventListener: (string, listenerId) => unit =
 
 let useWindowSize = () => {
   let ((width, height), setSize) =
-    ReactHooks.useState((windowWidth, windowHeight));
-  ReactHooks.useEffect(
+    React.useState(() => (windowWidth, windowHeight));
+  React.useEffect0(
     () => {
-      let handleResize = _ => setSize(. (windowWidth, windowHeight));
+      let handleResize = _ => setSize(_ => (windowWidth, windowHeight));
       let listener = addWindowEventListener("resize", handleResize);
-      Some((.) => removeWindowEventListener("resize", listener));
+      Some(() => removeWindowEventListener("resize", listener));
     },
-    [||],
   );
   (width, height);
 };

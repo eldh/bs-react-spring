@@ -1,28 +1,16 @@
 {
   "name": "bs-react-spring",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
-    "reason-react": "git://github.com/rickyvetter/reason-react.git#master",
-    "react-spring": "^7.2.7",
-    "react-with-gesture": "^4.0.2"
+    "react-spring": "^8.0.27",
+    "react-with-gesture": "^4.0.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "bsb -clean-world -make-world -w",
+    "build": "bsb -clean-world -make-world"
   },
-  "eslintConfig": {
-    "extends": "/Users/eldh/Code/react-spring/node_modules/bs-react-scripts/config/eslintConfig.js"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "bs-platform": "^4.0.14"
+    "bs-platform": "^5.0.6",
+    "reason-react": "^0.7.0"
   }
 }

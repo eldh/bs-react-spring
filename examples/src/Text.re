@@ -1,4 +1,3 @@
-[@bs.config {jsx: 3}];
 [%bs.raw {|require('./Text.css')|}];
 
 let component = ReasonReact.statelessComponent(__MODULE__);
@@ -11,7 +10,7 @@ let getValues = visible => {
 };
 [@react.component]
 let make = () => {
-  let (visible, setVisible) = ReactHooks.useState(true);
+  let (visible, setVisible) = React.useState(() => true);
 
   let (trail, setTrail) =
     Spring.useTrail(
@@ -22,7 +21,7 @@ let make = () => {
       (),
     );
   let _ =
-    ReactHooks.useEffect(
+    React.useEffect1(
       () => {
         setTrail(. getValues(visible));
         None;
@@ -30,7 +29,7 @@ let make = () => {
       [|visible|],
     );
 
-  <div className="trails-main" onClick={_ => setVisible(. !visible)}>
+  <div className="trails-main" onClick={_ => setVisible(v => !v)}>
     <div>
       {ReasonReact.array(
          Belt_Array.mapWithIndex(trail, (index, values) =>

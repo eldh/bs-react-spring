@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bsreact-scripts": "file:/Users/eldh/Code/reason-scripts",
+    "bs-react-scripts": "^0.0.13",
     "bs-react-spring": "*",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "reason-react": "git://github.com/rickyvetter/reason-react.git#master",
-    "react-spring": "^7.2.7",
-    "react-with-gesture": "^4.0.2"
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-spring": "^8.0.27",
+    "react-with-gesture": "^4.0.8",
+    "reason-react": "0.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,8 +27,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.6",
-    "bs-css": "^8.0.0",
-    "bs-platform": "^4.0.14"
+    "@glennsl/bs-jest": "^0.4.9",
+    "bs-css": "^10.0.1",
+    "bs-platform": "^5.0.6"
   }
 }

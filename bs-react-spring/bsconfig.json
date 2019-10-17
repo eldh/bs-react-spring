@@ -1,7 +1,6 @@
 {
   "name": "bs-react-spring",
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
-  "ppx-flags": ["../ppx/reactjs_jsx_ppx_v3.exe"],
   "sources": [
     "src",
     {
@@ -11,7 +10,7 @@
   ],
   "suffix": ".bs.js",
   "reason": {
-    "jsx": 3
+    "react-jsx": 3
   },
   "package-specs": [
     {

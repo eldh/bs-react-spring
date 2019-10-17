@@ -1,4 +1,3 @@
-[@bs.config {jsx: 3}];
 [%bs.raw {|require('./ViewPager.css')|}];
 
 let pages = [|
@@ -53,19 +52,21 @@ let make = () => {
         if (down && distance > windowWidthF /. 2.) {
           cancel(.
             {
-              index##current
-              #= clamp(
-                   index##current + (xDir->int_of_float > 0 ? (-1) : 1),
-                   0,
-                   number - 1,
-                 );
-              index##current;
+              let newVal =
+                clamp(
+                  React.Ref.current(index)
+                  + (xDir->int_of_float > 0 ? (-1) : 1),
+                  0,
+                  number - 1,
+                );
+              React.Ref.setCurrent(index, newVal);
+              newVal;
             },
           );
         };
         set(i => {
           let x =
-            (i - index##current)
+            (i - React.Ref.current(index))
             * windowWidth
             + (down ? xDelta->int_of_float : 0);
           let rv = {"x": x->float_of_int, "sc": sc, "display": "block"};
@@ -82,7 +83,8 @@ let make = () => {
          let url = pages[i];
          Js.log2("p", p);
 
-         <Spring.Div key=i spreadProps style={ReactDOMRe.Style.make()}>
+         <Spring.Div
+           key={i->string_of_int} spreadProps style={ReactDOMRe.Style.make()}>
            <Spring.Div
              style={ReactDOMRe.Style.make(
                ~transform=p##sc->Springs.interpolate(s => {j|scale($(s))|j}),

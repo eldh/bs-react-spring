@@ -1,4 +1,3 @@
-[@bs.config {jsx: 3}];
 /*
  useSpring(Values | () => Values): animatedProps | [animatedProps, set]
  useTrail(Count, Values | () => Values): [animatedProps] | [[animatedProps], set]
@@ -28,11 +27,11 @@ type config = {
   easing: float => float,
 };
 
-[@bs.module "react-spring/hooks"]
+[@bs.module "react-spring"]
 external _externalUseSpring: (unit => 'a) => (Js.t({..}), (. 'a) => unit) =
   "useSpring";
 
-[@bs.module "react-spring/hooks"]
+[@bs.module "react-spring"]
 external _externalUseTrail:
   (int, unit => 'a) => (array(Js.t({..})), (. 'a) => unit) =
   "useTrail";
@@ -63,7 +62,7 @@ module MakeSpring = (Config: {
   type valuesObj = {. "__values": values};
   type valuesFn = unit => valuesObj;
 
-  [@bs.module "react-spring/hooks"]
+  [@bs.module "react-spring"]
   external useSpring_: valuesFn => ('retVals, (. valuesObj) => unit) =
     "useSpring";
   [@bs.send]
@@ -105,7 +104,7 @@ module MakeTrail = (Config: {
   type trailArr = array(valuesObj);
   type valuesFn = unit => valuesObj;
 
-  [@bs.module "react-spring/hooks"]
+  [@bs.module "react-spring"]
   external useTrail_:
     (int, unit => valuesObj) => (trailArr, (. valuesObj) => unit) =
     "useTrail";
@@ -152,7 +151,7 @@ module MakeSprings = (Config: {
   type springsArr = array(valuesObj);
   type valuesFn = unit => valuesObj;
 
-  [@bs.module "react-spring/hooks"]
+  [@bs.module "react-spring"]
   external useSprings_:
     (int, int => valuesObj) => (springsArr, (. int => valuesObj) => unit) =
     "useSprings";
@@ -194,7 +193,7 @@ module MakeSprings = (Config: {
 
 module Div = {
   type reactElement;
-  [@bs.module "react-spring/hooks"] [@bs.scope "animated"]
+  [@bs.module "react-spring"] [@bs.scope "animated"]
   external externalDiv_: reactElement = "div";
   [@bs.module "react"]
   external externalCreateElement:
