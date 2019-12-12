@@ -1,6 +1,6 @@
 [%bs.raw {|require('./Card.css')|}];
 
-module Hooks =
+module SpringHook =
   Spring.MakeSpring({
     type t = (float, float, float);
     type interpolate = (float, float, float) => string;
@@ -18,7 +18,7 @@ let make = () => {
   );
 
   let (values, setValues) =
-    Hooks.use(
+    SpringHook.use(
       ~config=Spring.config(~mass=1., ~tension=80., ~friction=20.),
       (0., 0., 1.),
     );
@@ -33,7 +33,7 @@ let make = () => {
     }}
     onMouseLeave={() => setValues((0., 0., 1.))}
     style={ReactDOMRe.Style.make(
-      ~transform=values->Hooks.interpolate(trans),
+      ~transform=values->SpringHook.interpolate(trans),
       (),
     )}
   />;

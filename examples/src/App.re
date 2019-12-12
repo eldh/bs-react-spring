@@ -3,7 +3,7 @@ module Index = {
   [@react.component]
   let make = () => {
     <>
-      {["card", "pager", "goo", "pull", "text"]
+      {["card", "pager", "goo", "numbers", "pull", "text"]
        |> List.map(url => {
             <div key=url className>
               <a href={"/" ++ url}> url->React.string </a>
@@ -23,6 +23,7 @@ let make = () => {
   switch (url.path) {
   | ["card"] => <Card />
   | ["pager"] => <ViewPager />
+  | ["numbers"] => <Numbers />
   | ["goo"] => <Goo />
   | ["pull"] => <Pull />
   | ["text"] => <Text />

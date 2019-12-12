@@ -51,6 +51,62 @@ let constructSpringObj = (~values, ~from, ~config, ()) =>
 let useSpring = (~values, ~from=?, ~config=?, ()) =>
   _externalUseSpring(constructSpringObj(~values, ~from, ~config, ()));
 
+/**
+ * const [items, set] = useState([...])
+const transitions = useTransition(items, item => item.key, {
+from: { transform: 'translate3d(0,-40px,0)' },
+enter: { transform: 'translate3d(0,0px,0)' },
+leave: { transform: 'translate3d(0,-40px,0)' },
+})
+return transitions.map(({ item, props, key }) =>
+<animated.div key={key} style={props}>{item.text}</animated.div>
+)
+ */
+module MakeTransition = (Config: {type t;}) => {
+  [@bs.deriving abstract]
+  type config = {
+    //	obj/fn	Initial (first time) base values, optional (can be null)
+    [@bs.optional]
+    initial: Config.t,
+    //	obj/fn	Base values, optional
+    [@bs.optional]
+    from: Config.t,
+    //	obj/fn/array(obj)	Styles apply for entering elements
+    enter: Config.t,
+    //	obj/fn/array(obj)	Styles apply for updating elements (you can update the hook itself with new values)
+    [@bs.optional]
+    update: Config.t,
+    //	obj/fn/array(obj)	Styles apply for leaving elements
+    leave: Config.t,
+    //	number	Delay in ms before the animation starts, adds up for each enter/update and leave
+    [@bs.optional]
+    trail: int,
+    //	bool/fn	If this is true, items going in and out with the same key will be re-used
+    [@bs.optional]
+    unique: bool,
+    //	bool/fn	Used in combination with "unique" and makes entering items start from scratch
+    [@bs.optional]
+    reset: bool,
+    //	fn	Called when objects have disappeared for good
+    [@bs.optional]
+    onDestroyed: unit => unit,
+  };
+
+  type transitionType = {
+    item: int,
+    key: string,
+    props: Config.t,
+  };
+
+  [@bs.module "react-spring"]
+  external _externalUseTransitionArray:
+    (int, int => string, config) => array(transitionType) =
+    "useTransition";
+
+  let use = (index: int, config: config) =>
+    _externalUseTransitionArray(index, string_of_int, config);
+};
+
 let useTrail = (~number: int, ~from=?, ~config=?, ~values, ()) =>
   _externalUseTrail(number, constructSpringObj(~values, ~from, ~config, ()));
 
@@ -153,25 +209,26 @@ module MakeSprings = (Config: {
 
   [@bs.module "react-spring"]
   external useSprings_:
-    (int, int => valuesObj) => (springsArr, (. int => valuesObj) => unit) =
+    (int, int => valuesObj) => (springsArr, (. (int => valuesObj)) => unit) =
     "useSprings";
 
   [@bs.send]
-  external interpolate_: ('a, Config.interpolate) => string =
-    "interpolate";
+  external interpolate_: ('a, Config.interpolate) => string = "interpolate";
 
   let interpolate = interpolate_;
 
   let use = (~number, ~config=?, ~from=?, startValues) => {
     let (retValues, set_) =
       useSprings_(number, i =>
-        Obj.magic(constructSpringObj(
-          ~values=() => startValues(i),
-          ~from,
-          ~config,
-          (),
-          (),
-        ))
+        Obj.magic(
+          constructSpringObj(
+            ~values=() => startValues(i),
+            ~from,
+            ~config,
+            (),
+            (),
+          ),
+        )
       );
 
     let setFn = (~config=?, ~from=?, setValues) => {
@@ -183,8 +240,8 @@ module MakeSprings = (Config: {
           (),
           (),
         );
-        Js.log3("setInput", setInput, setInput(0));
-        
+      Js.log3("setInput", setInput, setInput(0));
+
       set_(. Obj.magic(setInput));
     };
     (retValues |> Array.map(t => t): array(values), setFn);
