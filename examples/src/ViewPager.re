@@ -40,12 +40,11 @@ let make = () => {
   let spreadProps =
     Gesture.useGesture(.
       prps => {
-        let down = prps->Gesture.downGet;
-        let (xDelta, _yDelta) = prps->Gesture.deltaGet;
-        let (xDir, _ydir) = prps->Gesture.directionGet;
-        let cancel = prps->Gesture.cancelGet;
-        let distance = prps->Gesture.distanceGet;
-        Js.log2("cancel", cancel);
+        let down = prps.down;
+        let (xDelta, _yDelta) = prps.delta;
+        let (xDir, _ydir) = prps.direction;
+        let cancel = prps.cancel;
+        let distance = prps.distance;
 
         let sc =
           down ? (1. -. distance /. windowWidthF /. 2.)->int_of_float : 1;
@@ -77,7 +76,7 @@ let make = () => {
       (),
     );
   Js.log4("props, set", props, set, index);
-  <>
+  <div className="pager">
     {props
      ->Belt.Array.mapWithIndex((i, p) => {
          let url = pages[i];
@@ -94,8 +93,8 @@ let make = () => {
            />
          </Spring.Div>;
        })
-     ->ReasonReact.array}
-  </>;
+     ->React.array}
+  </div>;
 };
 /*
      let bind = useGesture(({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {

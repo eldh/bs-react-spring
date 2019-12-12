@@ -6,7 +6,6 @@
 
  */
 
-[@bs.deriving abstract]
 type props = {
   /* source event */
   event: ReactEvent.Mouse.t,

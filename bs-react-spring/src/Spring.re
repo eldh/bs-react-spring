@@ -226,7 +226,7 @@ module Div = {
         ~onClick=?,
         ~onMouseDown=?,
         ~style,
-        ~children=ReasonReact.null,
+        ~children=React.null,
         (),
       ) => {
     let props =

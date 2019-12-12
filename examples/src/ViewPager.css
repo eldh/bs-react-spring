@@ -16,7 +16,7 @@ body {
   overflow: hidden;
 }
 
-#root {
+.pager {
   position: fixed;
   overflow: hidden;
   width: 100%;
@@ -26,14 +26,14 @@ body {
     auto;
 }
 
-#root > div {
+.pager > div {
   position: absolute;
   width: 100vw;
   height: 100vh;
   will-change: transform;
 }
 
-#root > div > div {
+.pager > div > div {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

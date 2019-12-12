@@ -22,9 +22,9 @@ let make = () => {
   let gestureProps =
     Gesture.useGesture(.
       props => {
-        let down = props->Gesture.downGet;
-        let delta = props->Gesture.deltaGet;
-        let velocity = props->Gesture.velocityGet;
+        let down = props.down;
+        let delta = props.delta;
+        let velocity = props.velocity;
         let vel = clamp(velocity, 1., 8.);
         let xy = down ? delta : (0., 0.);
         set(
@@ -35,14 +35,16 @@ let make = () => {
       },
       (),
     );
-  <Spring.Div
-    spreadProps=gestureProps
-    style={ReactDOMRe.Style.make(
-      ~transform=
-        vals->SpringHook.interpolate((x, y) =>
-          {j|translate3d($(x)px,$(y)px,0)|j}
-        ),
-      (),
-    )}
-  />;
+  <div className="pull">
+    <Spring.Div
+      spreadProps=gestureProps
+      style={ReactDOMRe.Style.make(
+        ~transform=
+          vals->SpringHook.interpolate((x, y) =>
+            {j|translate3d($(x)px,$(y)px,0)|j}
+          ),
+        (),
+      )}
+    />
+  </div>;
 };

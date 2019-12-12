@@ -1,6 +1,5 @@
 [%bs.raw {|require('./Goo.css')|}];
 
-let component = ReasonReact.statelessComponent(__MODULE__);
 let fast =
   Spring.config(~tension=1200., ~friction=40., ~mass=Obj.magic(Js.null));
 let slow = Spring.config(~tension=200., ~friction=50., ~mass=10.);
@@ -49,7 +48,7 @@ let make = () => {
               )}
             />
           )
-       |> ReasonReact.array}
+       |> React.array}
     </div>
   </>;
 };

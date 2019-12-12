@@ -15,6 +15,7 @@ node_modules
 .merlin
 /lib
 *.bs.js
+.bsb.lock
 
 # misc
 .DS_Store

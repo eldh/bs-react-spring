@@ -1,6 +1,5 @@
 [%bs.raw {|require('./Text.css')|}];
 
-let component = ReasonReact.statelessComponent(__MODULE__);
 let transX = x => {j|translate3d(0,$(x)px,0)|j};
 let items = ["Lorem", "ipsum", "dolor", "sit"];
 let getValues = visible => {
@@ -31,7 +30,7 @@ let make = () => {
 
   <div className="trails-main" onClick={_ => setVisible(v => !v)}>
     <div>
-      {ReasonReact.array(
+      {React.array(
          Belt_Array.mapWithIndex(trail, (index, values) =>
            <Spring.Div
              key={items->Belt_List.getExn(index)}
@@ -43,7 +42,7 @@ let make = () => {
              )}>
              <Spring.Div
                style={ReactDOMRe.Style.make(~height=values##height, ())}>
-               {items->Belt_List.getExn(index)->ReasonReact.string}
+               {items->Belt_List.getExn(index)->React.string}
              </Spring.Div>
            </Spring.Div>
          ),

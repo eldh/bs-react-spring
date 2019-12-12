@@ -1,6 +1,6 @@
 # bs-react-spring
 
-Reason bindings for [react-spring](http://react-spring.surge.sh). Works with the next version of ReasonReact.
+Reason bindings for [react-spring](http://react-spring.surge.sh). Works with ReasonReact 0.7.0 and above.
 
 ## Todo
 

@@ -19,7 +19,7 @@ body {
   align-items: center;
 }
 
-#root > div {
+.pull > div {
   width: 100px;
   height: 100px;
   background: hotpink;
@@ -32,6 +32,6 @@ body {
   white-space: pre;
 }
 
-#root > div:active {
+.pull > div:active {
   cursor: -webkit-grabbing;
 }
