@@ -197,7 +197,7 @@ module Div = {
   external externalDiv_: reactElement = "div";
   [@bs.module "react"]
   external externalCreateElement:
-    (reactElement, Js.t({..}), ReasonReact.reactElement) => React.element =
+    (reactElement, Js.t({..}), React.element) => React.element =
     "createElement";
   type spreadProps;
   [@bs.deriving abstract]
