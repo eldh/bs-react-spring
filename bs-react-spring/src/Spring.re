@@ -66,6 +66,7 @@ module MakeTransition = (Config: {
                            type t;
                            type item;
                          }) => {
+                           type springConfig = config;
   [@bs.deriving abstract]
   type config = {
     //	obj/fn	Initial (first time) base values, optional (can be null)
@@ -93,6 +94,8 @@ module MakeTransition = (Config: {
     //	fn	Called when objects have disappeared for good
     [@bs.optional]
     onDestroyed: unit => unit,
+    [@bs.optional]
+    config: springConfig,
   };
 
   type transitionType = {
