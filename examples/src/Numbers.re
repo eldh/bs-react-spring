@@ -8,6 +8,7 @@ type prop = {
 module TransitionHooks =
   Spring.MakeTransition({
     type t = prop;
+    type item = int;
   });
 
 let pages = [|

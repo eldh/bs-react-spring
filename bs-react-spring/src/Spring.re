@@ -62,7 +62,10 @@ return transitions.map(({ item, props, key }) =>
 <animated.div key={key} style={props}>{item.text}</animated.div>
 )
  */
-module MakeTransition = (Config: {type t;}) => {
+module MakeTransition = (Config: {
+                           type t;
+                           type item;
+                         }) => {
   [@bs.deriving abstract]
   type config = {
     //	obj/fn	Initial (first time) base values, optional (can be null)
@@ -93,18 +96,18 @@ module MakeTransition = (Config: {type t;}) => {
   };
 
   type transitionType = {
-    item: int,
+    item: Config.item,
     key: string,
     props: Config.t,
   };
 
   [@bs.module "react-spring"]
   external _externalUseTransitionArray:
-    (int, int => string, config) => array(transitionType) =
+    (Config.item, int => string, config) => array(transitionType) =
     "useTransition";
 
-  let use = (index: int, config: config) =>
-    _externalUseTransitionArray(index, string_of_int, config);
+  let use = (item: Config.item, config: config) =>
+    _externalUseTransitionArray(item, string_of_int, config);
 };
 
 let useTrail = (~number: int, ~from=?, ~config=?, ~values, ()) =>

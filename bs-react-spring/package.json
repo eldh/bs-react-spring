@@ -1,6 +1,6 @@
 {
   "name": "bs-react-spring",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dependencies": {
     "react-spring": "^8.0.27",
     "react-with-gesture": "^4.0.8"
