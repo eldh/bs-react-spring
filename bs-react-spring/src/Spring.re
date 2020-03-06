@@ -66,7 +66,8 @@ module MakeTransition = (Config: {
                            type t;
                            type item;
                          }) => {
-                           type springConfig = config;
+  type springConfig = config;
+
   [@bs.deriving abstract]
   type config = {
     //	obj/fn	Initial (first time) base values, optional (can be null)
@@ -105,12 +106,10 @@ module MakeTransition = (Config: {
   };
 
   [@bs.module "react-spring"]
-  external _externalUseTransitionArray:
-    (Config.item, int => string, config) => array(transitionType) =
+  external use:
+    (array(Config.item), Config.item => string, config) =>
+    array(transitionType) =
     "useTransition";
-
-  let use = (item: Config.item, config: config) =>
-    _externalUseTransitionArray(item, string_of_int, config);
 };
 
 let useTrail = (~number: int, ~from=?, ~config=?, ~values, ()) =>
