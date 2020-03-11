@@ -1,4 +1,3 @@
-
 [%bs.raw {|require('./Numbers.css')|}];
 
 type prop = {
@@ -48,10 +47,11 @@ let pages = [|
 |];
 [@react.component]
 let make = () => {
-  let (index, setIndex) = React.useState(_ => 0);
+  let (indexes, setIndexes) = React.useState(_ => [|0|]);
   let transitions =
     TransitionHooks.use(
-      index,
+      indexes,
+      item => item->string_of_int,
       TransitionHooks.config(
         ~from={opacity: "0", transform: "translate3d(100%,0,0)"},
         ~enter={opacity: "1", transform: "translate3d(0%,0,0)"},
@@ -60,7 +60,13 @@ let make = () => {
         (),
       ),
     );
-  let onClick = React.useCallback0(_ => setIndex(state => (state + 1) mod 3));
+  let onClick =
+    React.useCallback0(_ =>
+      setIndexes(state => {
+        let index = state->Belt.Array.get(0)->Belt.Option.getWithDefault(0);
+        [|(index + 1) mod 3|];
+      })
+    );
   <div className="numbers">
     <div className="simple-trans-main" onClick>
       {Array.map(
