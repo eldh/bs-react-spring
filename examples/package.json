@@ -5,8 +5,8 @@
   "dependencies": {
     "bs-react-scripts": "^0.0.13",
     "bs-react-spring": "*",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-spring": "^8.0.27",
     "react-with-gesture": "^4.0.8",
     "reason-react": "0.7.0"
@@ -24,8 +24,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.9",
+    "@glennsl/bs-jest": "^0.5.0",
     "bs-css": "^11.0.0",
-    "bs-platform": "^7.0.1"
+    "bs-platform": "^7.2.2"
   }
 }

@@ -3,5 +3,8 @@
     "bs-react-spring",
     "examples"
   ],
-  "private": true
+  "private": true,
+  "resolutions": {
+    "babel-jest": "24.7.1"
+  }
 }
