@@ -18,6 +18,7 @@
       "in-source": true
     }
   ],
-  "bs-dependencies": ["@glennsl/bs-jest", "reason-react"],
+  "bs-dependencies": ["reason-react"],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"],
   "refmt": 3
 }
