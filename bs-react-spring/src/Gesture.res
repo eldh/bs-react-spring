@@ -10,7 +10,7 @@ type props = {
   /* source event */
   event: ReactEvent.Mouse.t,
   /* dom node */
-  target: Js.t({.}),
+  target: {.},
   /* time tag */
   time: float,
   /* click coordinates (vec2) */
@@ -35,12 +35,11 @@ type props = {
   /* marks first event (mouse / touch down) */
   first: bool,
   /* arguments optionally passed to bind(a,b,c,d,..) */
-  args: Js.t({.}),
+  args: {.},
   /* arguments optionally returned by onActions eventHandler */
-  temp: Js.t({.}),
-};
-[@bs.module "react-with-gesture"]
-external _externalUseGesture: (. props => 'a) => 'a => Spring.Div.spreadProps =
-  "useGesture";
+  temp: {.},
+}
+@module("react-with-gesture")
+external _externalUseGesture: (. props => 'a, 'a) => Spring.Div.spreadProps = "useGesture"
 
-let useGesture = _externalUseGesture;
+let useGesture = _externalUseGesture

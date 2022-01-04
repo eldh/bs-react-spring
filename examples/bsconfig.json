@@ -18,6 +18,6 @@
       "in-source": true
     }
   ],
-  "bs-dependencies": ["bs-css", "@glennsl/bs-jest", "reason-react", "bs-react-spring"],
+  "bs-dependencies": ["bs-css", "@glennsl/bs-jest", "@rescript/react", "bs-react-spring"],
   "refmt": 3
 }
