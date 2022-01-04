@@ -18,7 +18,7 @@ let make = () => {
 
   <>
     <svg
-      style={ReactDOMRe.Style.make(
+      style={ReactDOM.Style.make(
         ~position="absolute",
         ~width="0",
         ~height="0",
@@ -42,7 +42,7 @@ let make = () => {
        |> Array.mapi((index, props) =>
             <Spring.Div
               key={index->string_of_int}
-              style={ReactDOMRe.Style.make(
+              style={ReactDOM.Style.make(
                 ~transform=props->TrailHook.interpolate(trans),
                 (),
               )}

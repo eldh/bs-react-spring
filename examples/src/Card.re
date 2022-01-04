@@ -32,7 +32,7 @@ let make = () => {
       setValues(vals);
     }}
     onMouseLeave={() => setValues((0., 0., 1.))}
-    style={ReactDOMRe.Style.make(
+    style={ReactDOM.Style.make(
       ~transform=values->SpringHook.interpolate(trans),
       (),
     )}

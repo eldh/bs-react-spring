@@ -14,7 +14,7 @@ let pages = [|
   (style, key) =>
     <Spring.Div
       key
-      style={ReactDOMRe.Style.make(
+      style={ReactDOM.Style.make(
         ~opacity=style.opacity,
         ~transform=style.transform,
         ~backgroundColor="lightpink",
@@ -25,7 +25,7 @@ let pages = [|
   (style, key) =>
     <Spring.Div
       key
-      style={ReactDOMRe.Style.make(
+      style={ReactDOM.Style.make(
         ~opacity=style.opacity,
         ~transform=style.transform,
         ~backgroundColor="lightblue",
@@ -36,7 +36,7 @@ let pages = [|
   (style, key) =>
     <Spring.Div
       key
-      style={ReactDOMRe.Style.make(
+      style={ReactDOM.Style.make(
         ~opacity=style.opacity,
         ~transform=style.transform,
         ~backgroundColor="lightgreen",

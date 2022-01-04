@@ -17,7 +17,7 @@ module Index = {
 
 [@react.component]
 let make = () => {
-  let url = ReasonReact.Router.useUrl();
+  let url = RescriptReactRouter.useUrl();
   Js.log2(url, url.path);
   
   switch (url.path) {

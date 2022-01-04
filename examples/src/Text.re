@@ -35,13 +35,13 @@ let make = () => {
            <Spring.Div
              key={items->Belt_List.getExn(index)}
              className="trails-text"
-             style={ReactDOMRe.Style.make(
+             style={ReactDOM.Style.make(
                ~opacity=values##opacity,
                ~transform=values##x##interpolate(transX),
                (),
              )}>
              <Spring.Div
-               style={ReactDOMRe.Style.make(~height=values##height, ())}>
+               style={ReactDOM.Style.make(~height=values##height, ())}>
                {items->Belt_List.getExn(index)->React.string}
              </Spring.Div>
            </Spring.Div>

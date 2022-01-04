@@ -83,9 +83,9 @@ let make = () => {
          Js.log2("p", p);
 
          <Spring.Div
-           key={i->string_of_int} spreadProps style={ReactDOMRe.Style.make()}>
+           key={i->string_of_int} spreadProps style={ReactDOM.Style.make()}>
            <Spring.Div
-             style={ReactDOMRe.Style.make(
+             style={ReactDOM.Style.make(
                ~transform=p##sc->Springs.interpolate(s => {j|scale($(s))|j}),
                ~backgroundImage={j|url($(url))|j},
                (),

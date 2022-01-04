@@ -38,7 +38,7 @@ let make = () => {
   <div className="pull">
     <Spring.Div
       spreadProps=gestureProps
-      style={ReactDOMRe.Style.make(
+      style={ReactDOM.Style.make(
         ~transform=
           vals->SpringHook.interpolate((x, y) =>
             {j|translate3d($(x)px,$(y)px,0)|j}

@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rescript/react": "^0.10.3",
     "bs-react-scripts": "^0.0.13",
     "bs-react-spring": "*",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-spring": "^8.0.27",
-    "react-with-gesture": "^4.0.8",
-    "reason-react": "0.7.0"
+    "react-with-gesture": "^4.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
