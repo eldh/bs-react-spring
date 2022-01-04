@@ -5,6 +5,12 @@
     "react-spring": "^8.0.27",
     "react-with-gesture": "^4.0.8"
   },
+  "files": [
+    "src",
+    "__tests__",
+    "package.json",
+    "bsconfig.json"
+  ],
   "scripts": {
     "start": "rescript build -with-deps -w",
     "build": "rescript clean && rescript build -with-deps"
